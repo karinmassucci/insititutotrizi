@@ -34,8 +34,11 @@ jobs:
 
       - name: Prepare site
         run: |
-          mkdir -p public
-          cp doctor-wellness-premium.html public/index.html
+          mkdir -p public/doctor-wellness-premium
+          cp doctor-wellness-premium.html public/doctor-wellness-premium/index.html
+          cat > public/index.html <<'EOF'
+          <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=./doctor-wellness-premium/"><title>Doctor Wellness Premium</title></head><body><a href="./doctor-wellness-premium/">Abrir Doctor Wellness Premium</a></body></html>
+          EOF
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
